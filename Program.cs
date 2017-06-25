@@ -10,8 +10,7 @@ namespace net.vieapps.Services.memcachedService
 
 		static void Main()
 		{
-			ServiceBase[] servicesToRun = new ServiceBase[] { new memcachedService() };
-			ServiceBase.Run(servicesToRun);
+			ServiceBase.Run(new ServiceBase[] { new memcachedService() });
 		}
 
 	}
