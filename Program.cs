@@ -7,11 +7,9 @@ namespace net.vieapps.Services.memcachedService
 {
 	static class Program
 	{
-
 		static void Main()
 		{
 			ServiceBase.Run(new ServiceBase[] { new memcachedService() });
 		}
-
 	}
 }
