@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Configuration.Install;
 using System.ServiceProcess;
 
-namespace net.vieapps.Services.memcachedService
+namespace net.vieapps.Services.Utility.memcachedService
 {
 	[RunInstaller(true)]
 	public partial class ProjectInstaller : Installer
@@ -22,9 +22,9 @@ namespace net.vieapps.Services.memcachedService
 			this.Installers.Add(new ServiceInstaller()
 			{
 				StartType = ServiceStartMode.Automatic,
-				DisplayName = "VIEApps NGX Memcached",
-				Description = "memcached Server for Windows x64",
-				ServiceName = "VIEAppsMemcached"
+				ServiceName = "VIEAppsMemcached",
+				DisplayName = "VIEApps Memcached",
+				Description = "memcached Server for Windows x64"
 			});
 
 			this.AfterInstall += new InstallEventHandler(this.StartServiceAfterInstall);
@@ -34,9 +34,9 @@ namespace net.vieapps.Services.memcachedService
 		{
 			try
 			{
-				using (var serviceController = new ServiceController("VIEAppsMemcached"))
+				using (var controller = new ServiceController("VIEAppsMemcached"))
 				{
-					serviceController.Start();
+					controller.Start();
 				}
 			}
 			catch { }

@@ -4,9 +4,9 @@ using System.Runtime.InteropServices;
 
 // General Information about an assembly is controlled through the following set of attributes.
 // Change these attribute values to modify the information associated with an assembly.
-[assembly: AssemblyTitle("VIEApps NGX Memcached")]
-[assembly: AssemblyDescription("Distributed caching services with memcached Server for Windows x64")]
-[assembly: AssemblyDefaultAlias("VIEApps.Services.Memcached")]
+[assembly: AssemblyTitle("VIEApps Memcached")]
+[assembly: AssemblyDescription("memcached Server for Windows x64")]
+[assembly: AssemblyDefaultAlias("VIEApps.Services.Utility.Memcached")]
 [assembly: AssemblyConfiguration("Production/Stable")]
 [assembly: AssemblyCompany("VIEApps.net")]
 [assembly: AssemblyProduct("VIEApps NGX")]
@@ -30,4 +30,4 @@ using System.Runtime.InteropServices;
 //
 [assembly: AssemblyVersion("10.1")]
 [assembly: AssemblyFileVersion("10.1")]
-[assembly: AssemblyInformationalVersion("10.1.fstv-2017.03.28")]
+[assembly: AssemblyInformationalVersion("10.1.ngxv-2017.07.01")]

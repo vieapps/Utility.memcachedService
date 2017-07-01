@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.ServiceProcess;
 using System.Diagnostics;
 
-namespace net.vieapps.Services.memcachedService
+namespace net.vieapps.Services.Utility.memcachedService
 {
 	static class Program
 	{

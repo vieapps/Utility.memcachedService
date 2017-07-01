@@ -5,7 +5,7 @@ using System.Configuration;
 using System.Diagnostics;
 #endregion
 
-namespace net.vieapps.Services.memcachedService
+namespace net.vieapps.Services.Utility.memcachedService
 {
 	public partial class memcachedService : ServiceBase
 	{
@@ -22,7 +22,7 @@ namespace net.vieapps.Services.memcachedService
 		{
 			// initialize log
 			string logName = "Application";
-			string logSource = "VIEApps NGX Memcached";
+			string logSource = "VIEApps Memcached";
 
 			if (!EventLog.SourceExists(logSource))
 				EventLog.CreateEventSource(logSource, logName);
@@ -78,7 +78,7 @@ namespace net.vieapps.Services.memcachedService
 				this._process.BeginOutputReadLine();
 				this._process.BeginErrorReadLine();
 
-				this._log.WriteEntry("memcached Server x64 is started [" + arguments + "]" + "\r\n\r\n" + "PID:" + "\r\n" + "- Server: " + this._process.Id.ToString() + "\r\n" + "- Service: " + Process.GetCurrentProcess().Id.ToString());
+				this._log.WriteEntry("memcached Server x64 is started..." + "\r\n" + "- Arguments" + arguments + "]" + "\r\n" + "- Server PID: " + this._process.Id.ToString() + "\r\n" + "- Service PID: " + Process.GetCurrentProcess().Id.ToString());
 			}
 			catch (Exception ex)
 			{

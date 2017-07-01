@@ -8,7 +8,7 @@
     <ProjectGuid>{8AC55786-C100-4E80-B5B9-521572B72079}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>net.vieapps.Components.memcachedService</RootNamespace>
+    <RootNamespace>net.vieapps.Services.Utility.memcachedService</RootNamespace>
     <AssemblyName>memcachedService</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -19,7 +19,7 @@
     <IsWebBootstrapper>true</IsWebBootstrapper>
     <ApplicationIcon>memcachedService.ico</ApplicationIcon>
     <TargetFrameworkProfile />
-    <PublishUrl>http://localhost/VIEPortal.Timer/</PublishUrl>
+    <PublishUrl>http://releases.apis.vieapps.net/</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -65,10 +65,11 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>..\VIEPortalNG.Services.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>net.vieapps.Services.memcachedService.Program</StartupObject>
+    <StartupObject>net.vieapps.Services.Utility.memcachedService.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
