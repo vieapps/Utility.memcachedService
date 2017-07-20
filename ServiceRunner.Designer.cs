@@ -1,6 +1,6 @@
 namespace net.vieapps.Services.Utility.memcachedService
 {
-	partial class memcachedService
+	partial class ServiceRunner
 	{
 		/// <summary> 
 		/// Required designer variable.
@@ -25,7 +25,7 @@ namespace net.vieapps.Services.Utility.memcachedService
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.ServiceName = "VIEAppsMemcached";
+			this.ServiceName = "VIEApps-Memcached";
 		}
 
 	}

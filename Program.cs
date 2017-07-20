@@ -1,15 +1,26 @@
 using System;
-using System.Collections.Generic;
 using System.ServiceProcess;
-using System.Diagnostics;
+using System.Windows.Forms;
 
 namespace net.vieapps.Services.Utility.memcachedService
 {
 	static class Program
 	{
-		static void Main()
+		internal static bool AsService = !Environment.UserInteractive;
+		internal static ServicePresenter Form = null;
+
+		static void Main(string[] args)
 		{
-			ServiceBase.Run(new ServiceBase[] { new memcachedService() });
+			if (Program.AsService)
+				ServiceBase.Run(new ServiceRunner());
+			else
+			{
+				Application.EnableVisualStyles();
+				Application.SetCompatibleTextRenderingDefault(false);
+
+				Program.Form = new ServicePresenter();
+				Application.Run(Program.Form);
+			}
 		}
 	}
 }

@@ -22,9 +22,9 @@ namespace net.vieapps.Services.Utility.memcachedService
 			this.Installers.Add(new ServiceInstaller()
 			{
 				StartType = ServiceStartMode.Automatic,
-				ServiceName = "VIEAppsMemcached",
+				ServiceName = "VIEApps-Memcached",
 				DisplayName = "VIEApps Memcached",
-				Description = "memcached Server for Windows x64"
+				Description = "memcached Server for Windows (x86/x64)"
 			});
 
 			this.AfterInstall += new InstallEventHandler(this.StartServiceAfterInstall);
@@ -34,7 +34,7 @@ namespace net.vieapps.Services.Utility.memcachedService
 		{
 			try
 			{
-				using (var controller = new ServiceController("VIEAppsMemcached"))
+				using (var controller = new ServiceController("VIEApps-Memcached"))
 				{
 					controller.Start();
 				}
