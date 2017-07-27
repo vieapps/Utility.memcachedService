@@ -78,9 +78,15 @@ namespace net.vieapps.Services.Utility.memcachedService
 				if (!this._process.HasExited)
 				{
 					if (!this._process.WaitForExit(567))
+					{
 						this._process.Kill();
+						Helper.WriteLog(string.Format("memcached Server is killed.\r\n\t-Time: {0}\r\n\t-Code: {1}", this._process.ExitTime, this._process.ExitCode));
+					}
+					else
+						Helper.WriteLog(string.Format("memcached Server is stoped.\r\n\t-Time: {0}\r\n\t-Code: {1}", this._process.ExitTime, this._process.ExitCode));
 				}
-				Helper.WriteLog(string.Format("memcached Server x64 is stoped at {1}. Exit code: {0}", this._process.ExitCode, this._process.ExitTime));
+				else
+					Helper.WriteLog(string.Format("memcached Server is stoped.\r\n\t-Time: {0}\r\n\t-Code: {1}", this._process.ExitTime, this._process.ExitCode));
 			}
 			catch (Exception ex)
 			{
@@ -104,7 +110,7 @@ namespace net.vieapps.Services.Utility.memcachedService
 		{
 			if (!this._isTerminatedByService)
 			{
-				Helper.WriteLog(string.Format("memcached Server is stoped at {1}. Exit code: {0}", this._process.ExitCode, this._process.ExitTime));
+				Helper.WriteLog(string.Format("memcached Server is stoped suddently.\r\n\t-Time: {0}\r\n\t-Code: {1}", this._process.ExitTime, this._process.ExitCode));
 				Helper.WriteLog("Restart the process...");
 
 				this._process.Start();
