@@ -1,6 +1,6 @@
 namespace net.vieapps.Services.Utility.memcachedService
 {
-	partial class ProjectInstaller
+	partial class ServiceInstaller
 	{
 		/// <summary>
 		/// Required designer variable.
