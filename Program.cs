@@ -1,18 +1,18 @@
 using System;
-using System.ServiceProcess;
 using System.Windows.Forms;
 
 namespace net.vieapps.Services.Utility.memcachedService
 {
 	static class Program
 	{
-		internal static bool AsService = !Environment.UserInteractive;
+		internal static bool AsService = true;
 		internal static ServicePresenter Form = null;
 
 		static void Main(string[] args)
 		{
+			Program.AsService = !Environment.UserInteractive;
 			if (Program.AsService)
-				ServiceBase.Run(new ServiceRunner());
+				System.ServiceProcess.ServiceBase.Run(new ServiceRunner());
 			else
 			{
 				Application.EnableVisualStyles();

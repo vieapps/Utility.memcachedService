@@ -6,9 +6,9 @@ using System.ServiceProcess;
 namespace net.vieapps.Services.Utility.memcachedService
 {
 	[RunInstaller(true)]
-	public partial class ProjectInstaller : Installer
+	public partial class ServiceInstaller : Installer
 	{
-		public ProjectInstaller()
+		public ServiceInstaller()
 		{
 			this.InitializeComponent();
 
@@ -19,7 +19,7 @@ namespace net.vieapps.Services.Utility.memcachedService
 				Password = null
 			});
 
-			this.Installers.Add(new ServiceInstaller()
+			this.Installers.Add(new System.ServiceProcess.ServiceInstaller()
 			{
 				StartType = ServiceStartMode.Automatic,
 				ServiceName = "VIEApps-Memcached",
@@ -27,19 +27,17 @@ namespace net.vieapps.Services.Utility.memcachedService
 				Description = "memcached Server for Windows (x86/x64)"
 			});
 
-			this.AfterInstall += new InstallEventHandler(this.StartServiceAfterInstall);
-		}
-
-		void StartServiceAfterInstall(object sender, InstallEventArgs e)
-		{
-			try
+			this.AfterInstall += (sender, args) =>
 			{
-				using (var controller = new ServiceController("VIEApps-Memcached"))
+				try
 				{
-					controller.Start();
+					using (var controller = new ServiceController("VIEApps-Memcached"))
+					{
+						controller.Start();
+					}
 				}
-			}
-			catch { }
+				catch { }
+			};
 		}
 	}
 }

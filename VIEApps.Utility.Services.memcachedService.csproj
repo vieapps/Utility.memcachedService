@@ -87,11 +87,11 @@
   <ItemGroup>
     <Compile Include="Helper.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="ProjectInstaller.cs">
+    <Compile Include="ServiceInstaller.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ProjectInstaller.Designer.cs">
-      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    <Compile Include="ServiceInstaller.Designer.cs">
+      <DependentUpon>ServiceInstaller.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceComponent.cs" />
@@ -109,9 +109,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="ProjectInstaller.resx">
+    <EmbeddedResource Include="ServiceInstaller.resx">
       <SubType>Designer</SubType>
-      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+      <DependentUpon>ServiceInstaller.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ServicePresenter.resx">
       <DependentUpon>ServicePresenter.cs</DependentUpon>
