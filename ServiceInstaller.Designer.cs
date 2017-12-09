@@ -1,4 +1,4 @@
-namespace net.vieapps.Services.Utility.memcachedService
+namespace net.vieapps.Services.Utility.Memcached
 {
 	partial class ServiceInstaller
 	{

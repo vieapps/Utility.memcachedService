@@ -2,7 +2,7 @@ using System;
 using System.Configuration;
 using System.Diagnostics;
 
-namespace net.vieapps.Services.Utility.memcachedService
+namespace net.vieapps.Services.Utility.Memcached
 {
 	public class ServiceComponent
 	{
