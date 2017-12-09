@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using System.Diagnostics;
 
-namespace net.vieapps.Services.Utility.memcachedService
+namespace net.vieapps.Services.Utility.Memcached
 {
 	public partial class ServicePresenter : Form
 	{

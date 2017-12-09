@@ -6,7 +6,7 @@ using System.ServiceProcess;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 
-namespace net.vieapps.Services.Utility.memcachedService
+namespace net.vieapps.Services.Utility.Memcached
 {
 	internal static class Helper
 	{

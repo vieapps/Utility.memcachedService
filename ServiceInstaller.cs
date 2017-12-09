@@ -3,7 +3,7 @@ using System.ComponentModel;
 using System.Configuration.Install;
 using System.ServiceProcess;
 
-namespace net.vieapps.Services.Utility.memcachedService
+namespace net.vieapps.Services.Utility.Memcached
 {
 	[RunInstaller(true)]
 	public partial class ServiceInstaller : Installer

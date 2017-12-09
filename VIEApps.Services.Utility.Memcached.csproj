@@ -70,7 +70,7 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>net.vieapps.Services.Utility.memcachedService.Program</StartupObject>
+    <StartupObject>net.vieapps.Services.Utility.Memcached.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -1,7 +1,7 @@
 using System;
 using System.Windows.Forms;
 
-namespace net.vieapps.Services.Utility.memcachedService
+namespace net.vieapps.Services.Utility.Memcached
 {
 	static class Program
 	{
