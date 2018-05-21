@@ -6,11 +6,9 @@ namespace net.vieapps.Services.Utility.Memcached
 {
 	public class ServiceComponent
 	{
-		internal string _arguments = null;
-		Process _process = null;
-		bool _isTerminatedByService = false;
-
-		public ServiceComponent() { }
+		internal string Arguments { get; set; } = null;
+		Process Process { get; set; } = null;
+		bool IsTerminatedByService { get; set; } = false;
 
 		internal void Start(string[] args)
 		{
@@ -19,21 +17,21 @@ namespace net.vieapps.Services.Utility.Memcached
 				Helper.InitializeLog();
 
 			// prepare arguments
-			if (string.IsNullOrWhiteSpace(this._arguments))
-				this._arguments = args != null && args.Length > 0
+			if (string.IsNullOrWhiteSpace(this.Arguments))
+				this.Arguments = args != null && args.Length > 0
 					? string.Join(" ", args)
 					: ConfigurationManager.AppSettings.Get("Arguments");
 
-			if (string.IsNullOrWhiteSpace(this._arguments))
-				this._arguments = "-p 36429 -m 1024 -L";
+			if (string.IsNullOrWhiteSpace(this.Arguments))
+				this.Arguments = "-p 36429 -m 1024 -L";
 
 			// start the process
-			this._process = new Process()
+			this.Process = new Process
 			{
-				StartInfo = new ProcessStartInfo()
+				StartInfo = new ProcessStartInfo
 				{
 					FileName = "memcached.exe",
-					Arguments = this._arguments,
+					Arguments = this.Arguments,
 					CreateNoWindow = true,
 					WindowStyle = ProcessWindowStyle.Hidden,
 					ErrorDialog = false,
@@ -45,77 +43,74 @@ namespace net.vieapps.Services.Utility.Memcached
 				EnableRaisingEvents = true
 			};
 
-			this._process.OutputDataReceived += this.OnOutput;
-			this._process.ErrorDataReceived += this.OnOutput;
-			this._process.Exited += this.OnExit;
+			this.Process.OutputDataReceived += this.OnOutput;
+			this.Process.ErrorDataReceived += this.OnOutput;
+			this.Process.Exited += this.OnExit;
 
 			try
 			{
-				this._process.Start();
-				this._process.BeginOutputReadLine();
-				this._process.BeginErrorReadLine();
+				this.Process.Start();
+				this.Process.BeginOutputReadLine();
+				this.Process.BeginErrorReadLine();
 
-				Helper.WriteLog("memcached Server is started..." + "\r\n" + $"- Arguments: {this._arguments}\r\n- Server PID: {this._process.Id}\r\n- Service PID: {Process.GetCurrentProcess().Id}");
+				Helper.WriteLog("memcached Server is started..." + "\r\n" + $"- Arguments: {this.Arguments}\r\n- Server PID: {this.Process.Id}\r\n- Service PID: {Process.GetCurrentProcess().Id}");
 			}
 			catch (Exception ex)
 			{
-				Helper.WriteLog($"Error occured while starting memcached Server [{this._arguments}]", ex);
+				Helper.WriteLog($"Error occured while starting memcached Server [{this.Arguments}]", ex);
 			}
 		}
 
 		internal void Stop()
 		{
 			// stop the process
-			this._process.OutputDataReceived -= this.OnOutput;
-			this._process.ErrorDataReceived -= this.OnOutput;
-			this._process.Exited -= this.OnExit;
+			this.Process.OutputDataReceived -= this.OnOutput;
+			this.Process.ErrorDataReceived -= this.OnOutput;
+			this.Process.Exited -= this.OnExit;
 
 			try
 			{
-				this._isTerminatedByService = true;
-				this._process.StandardInput.Close();
-				this._process.Refresh();
-				if (!this._process.HasExited)
+				this.IsTerminatedByService = true;
+				this.Process.StandardInput.Close();
+				this.Process.Refresh();
+				if (!this.Process.HasExited)
 				{
-					if (!this._process.WaitForExit(567))
+					if (!this.Process.WaitForExit(567))
 					{
-						this._process.Kill();
-						Helper.WriteLog($"memcached Server is killed.\r\n\t-Time: {this._process.ExitTime}\r\n\t-Code: {this._process.ExitCode}");
+						this.Process.Kill();
+						Helper.WriteLog($"memcached Server is killed.\r\n\t-Time: {this.Process.ExitTime}\r\n\t-Code: {this.Process.ExitCode}");
 					}
 					else
-						Helper.WriteLog($"memcached Server is stoped.\r\n\t-Time: {this._process.ExitTime}\r\n\t-Code: {this._process.ExitCode}");
+						Helper.WriteLog($"memcached Server is stoped.\r\n\t-Time: {this.Process.ExitTime}\r\n\t-Code: {this.Process.ExitCode}");
 				}
 				else
-					Helper.WriteLog($"memcached Server is stoped.\r\n\t-Time: {this._process.ExitTime}\r\n\t-Code: {this._process.ExitCode}");
+					Helper.WriteLog($"memcached Server is stoped.\r\n\t-Time: {this.Process.ExitTime}\r\n\t-Code: {this.Process.ExitCode}");
 			}
 			catch (Exception ex)
 			{
 				Helper.WriteLog("Error occured while stopping memcached Server", ex);
 			}
 
-			this._process.Dispose();
-			this._process = null;
+			this.Process.Dispose();
+			this.Process = null;
 
 			// close log
 			if (Program.AsService)
 				Helper.DisposeLog();
 		}
 
-		void OnOutput(object sender, DataReceivedEventArgs args)
-		{
-			Helper.WriteLog(args.Data);
-		}
+		void OnOutput(object sender, DataReceivedEventArgs args) => Helper.WriteLog(args.Data);
 
 		void OnExit(object sender, EventArgs args)
 		{
-			if (!this._isTerminatedByService)
+			if (!this.IsTerminatedByService)
 			{
-				Helper.WriteLog($"memcached Server is stoped suddently.\r\n\t-Time: {this._process.ExitTime}\r\n\t-Code: {this._process.ExitCode}");
+				Helper.WriteLog($"memcached Server is stoped suddently.\r\n\t-Time: {this.Process.ExitTime}\r\n\t-Code: {this.Process.ExitCode}");
 				Helper.WriteLog("Restarting...");
 
-				this._process.Start();
-				this._process.BeginOutputReadLine();
-				this._process.BeginErrorReadLine();
+				this.Process.Start();
+				this.Process.BeginOutputReadLine();
+				this.Process.BeginErrorReadLine();
 			}
 		}
 	}

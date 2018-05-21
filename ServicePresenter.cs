@@ -6,13 +6,11 @@ namespace net.vieapps.Services.Utility.Memcached
 {
 	public partial class ServicePresenter : Form
 	{
-		ServiceComponent _component = null;
+		ServiceComponent Component { get; set; } = null;
 
-		public ServicePresenter()
-		{
+		public ServicePresenter() =>
 			// initialize
 			this.InitializeComponent();
-		}
 
 		private void ServicePresenter_Load(object sender, EventArgs e)
 		{
@@ -35,10 +33,10 @@ namespace net.vieapps.Services.Utility.Memcached
 
 			try
 			{
-				this._component = new ServiceComponent();
-				this._component.Start(args);
+				this.Component = new ServiceComponent();
+				this.Component.Start(args);
 
-				this.CommandLine.Text = "memcachedService.exe " + this._component._arguments.Trim();
+				this.CommandLine.Text = "memcachedService.exe " + this.Component.Arguments.Trim();
 				this.CommandLine.SelectionStart = this.CommandLine.TextLength;
 			}
 			catch (Exception ex)
@@ -49,8 +47,8 @@ namespace net.vieapps.Services.Utility.Memcached
 
 		private void ServicePresenter_FormClosed(object sender, FormClosedEventArgs e)
 		{
-			if (this._component != null)
-				this._component.Stop();
+			if (this.Component != null)
+				this.Component.Stop();
 		}
 
 		public delegate void UpdateLogsDelegator(string logs);
