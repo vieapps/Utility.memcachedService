@@ -24,7 +24,7 @@ namespace net.vieapps.Services.Utility.Memcached
 				StartType = ServiceStartMode.Automatic,
 				ServiceName = "VIEApps-Memcached",
 				DisplayName = "VIEApps Memcached",
-				Description = "memcached Server for Windows (x86/x64)"
+				Description = "memcached Server for Windows"
 			});
 
 			this.AfterInstall += (sender, args) =>

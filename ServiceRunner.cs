@@ -5,21 +5,12 @@ namespace net.vieapps.Services.Utility.Memcached
 {
 	public partial class ServiceRunner : ServiceBase
 	{
-		public ServiceRunner()
-		{
-			this.InitializeComponent();
-		}
+		ServiceComponent Component { get; } = new ServiceComponent();
 
-		ServiceComponent _component = new ServiceComponent();
+		public ServiceRunner() => this.InitializeComponent();
 
-		protected override void OnStart(string[] args)
-		{
-			this._component.Start(args);
-		}
+		protected override void OnStart(string[] args) => this.Component.Start(args);
 
-		protected override void OnStop()
-		{
-			this._component.Stop();
-		}
+		protected override void OnStop() => this.Component.Stop();
 	}
 }
