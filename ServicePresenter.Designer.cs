@@ -69,7 +69,7 @@
 			this.MinimizeBox = false;
 			this.Name = "ServicePresenter";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "VIEApps Memcached";
+			this.Text = "VIEApps NGX Memcached";
 			this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.ServicePresenter_FormClosed);
 			this.Load += new System.EventHandler(this.ServicePresenter_Load);
 			this.ResumeLayout(false);

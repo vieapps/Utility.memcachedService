@@ -26,7 +26,7 @@ namespace net.vieapps.Services.Utility.Memcached
 				args = new string[] { };
 
 			// start
-			this.UpdateLogs("The VIEApps Memcached is now running as a Windows desktop app" + "\r\n");
+			this.UpdateLogs("The VIEApps NGX Memcached is now running as a Windows desktop app" + "\r\n");
 			this.UpdateLogs("To install as a Windows service, use the InstallUtil.exe in the command prompt as \"InstallUtil /i memcachedService.exe\" (with Administrator privileges)");
 			this.UpdateLogs("--------------------------------------------------------------------" + "\r\n");
 			this.UpdateLogs("OUTPUT:" + "\r\n");

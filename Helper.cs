@@ -16,16 +16,16 @@ namespace net.vieapps.Services.Utility.Memcached
 		{
 			if (Helper.EventLog == null)
 			{
-				string logName = "Application";
-				string logSource = "VIEApps Memcached";
+				string name = "Application";
+				string source = "VIEAppsNGXMemcached";
 
-				if (!EventLog.SourceExists(logSource))
-					EventLog.CreateEventSource(logSource, logName);
+				if (!EventLog.SourceExists(source))
+					EventLog.CreateEventSource(source, name);
 
-				Helper.EventLog = new EventLog(logSource)
+				Helper.EventLog = new EventLog(source)
 				{
-					Source = logSource,
-					Log = logName
+					Source = source,
+					Log = name
 				};
 			}
 		}
